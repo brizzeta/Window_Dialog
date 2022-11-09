@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include <tchar.h>
 #include <ctime>
 #include "resource.h"
@@ -23,10 +23,10 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wp, LPARAM lp)
     {
         for (int i = 0; i < 9; i++)
         {
-            hBut[i] = GetDlgItem(hWnd, IDC_BUTTON1 + i);   //êíîïêè
+            hBut[i] = GetDlgItem(hWnd, IDC_BUTTON1 + i);   //ÐºÐ½Ð¾Ð¿ÐºÐ¸
         }
-        hBtm[0] = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP1));  //íîëèê
-        hBtm[1] = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP2));  //êðåñòèê
+        hBtm[0] = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP1));  //Ð½Ð¾Ð»Ð¸Ðº
+        hBtm[1] = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP2));  //ÐºÑ€ÐµÑÑ‚Ð¸Ðº
         return TRUE;
     }
     case WM_COMMAND:
@@ -35,7 +35,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wp, LPARAM lp)
         {
             if (wp == IDC_BUTTON1 + i)
             {
-                SendMessage(hBut[i], BM_SETIMAGE, WPARAM(IMAGE_BITMAP), LPARAM(hBtm[1]));  //óñòàíàâëèâàåì êàðòèíêó íà íàæàòóþ êíîïêó
+                SendMessage(hBut[i], BM_SETIMAGE, WPARAM(IMAGE_BITMAP), LPARAM(hBtm[1]));  //ÑƒÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ Ð½Ð° Ð½Ð°Ð¶Ð°Ñ‚ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ
                 EnableWindow(hBut[i], FALSE);
 
                 while (1)
@@ -43,7 +43,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wp, LPARAM lp)
                     int r = rand() % 9;
                     if (IsWindowEnabled(hBut[r]) == TRUE)
                     {
-                        SendMessage(hBut[r], BM_SETIMAGE, WPARAM(IMAGE_BITMAP), LPARAM(hBtm[0]));  //óñòàíàâëèâàåì êàðòèíêó íà äðóãóþ êíîïêó
+                        SendMessage(hBut[r], BM_SETIMAGE, WPARAM(IMAGE_BITMAP), LPARAM(hBtm[0]));  //ÑƒÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ Ð½Ð° Ð´Ñ€ÑƒÐ³ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ
                         EnableWindow(hBut[r], FALSE);
                         break;
                     }
@@ -51,12 +51,12 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wp, LPARAM lp)
                 break;
             }            
         }
-        if (wp == IDC_BUTTON10)  //åñëè íàæàòà êíîïêà "íîâàÿ èãðà"
+        if (wp == IDC_BUTTON10)  //ÐµÑÐ»Ð¸ Ð½Ð°Ð¶Ð°Ñ‚Ð° ÐºÐ½Ð¾Ð¿ÐºÐ° "Ð½Ð¾Ð²Ð°Ñ Ð¸Ð³Ñ€Ð°"
         {
             for (int i = 0; i < 9; i++)
             {
-                SendMessage(hBut[i], BM_SETIMAGE, NULL, LPARAM(NULL));  //óáèðàåì âñå êàðòèíêè
-                EnableWindow(hBut[i], TRUE);                            //äà¸ì äîñòóï äëÿ íàæàòèÿ íà êíîêïè
+                SendMessage(hBut[i], BM_SETIMAGE, NULL, LPARAM(NULL));  //ÑƒÐ±Ð¸Ñ€Ð°ÐµÐ¼ Ð²ÑÐµ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ¸
+                EnableWindow(hBut[i], TRUE);                            //Ð´Ð°Ñ‘Ð¼ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ð´Ð»Ñ Ð½Ð°Ð¶Ð°Ñ‚Ð¸Ñ Ð½Ð° ÐºÐ½Ð¾ÐºÐ¿Ð¸
             }
         }
         return TRUE;
